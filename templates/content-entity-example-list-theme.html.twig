@@ -1,0 +1,62 @@
+{{ attach_library('content_entity_example/scripts_content_entity_example_home') }}
+<section class="content_section">
+
+{#  Output a form for adding comments#}
+  {{ comment_form }}
+
+{#  Block for outputting form validation errors#}
+  <div id="form-system-messages"></div>
+
+  <div class="data">
+{#    If there are comments, then output it#}
+    {% if data.info %}
+      {% for w in data.info %}
+        <div class="review_block">
+
+{#          If the current user has administrator rights, show him the management link#}
+          {% if is_admin %}
+            <div class="admin_block">
+              {{ w.managed }}
+            </div>
+          {% endif %}
+
+          <div class="author_info">
+            <div class="info_block">
+{#              If no avatar has been specified, show default image#}
+              {% if w.avatar != 'default_avatar.png' %}
+                <img src="{{ w.avatar }}" alt="{{ w.avatar }}" class="avatar_photo">
+              {% else %}
+                <img src="{{ base_url }}/modules/custom/content_entity_example/images/{{ w.avatar }}" alt="{{ w.avatar }}" class="avatar_photo">
+              {% endif %}
+              <div class="text_block">
+                <p class="review_name">{{ w.name }}</p>
+                <p class="review_email">{{ w.email }}</p>
+                <p class="review_email">{{ w.phone_number }}</p>
+              </div>
+            </div>
+          </div>
+          <p class="review_text">{{ w.info_text | raw }}</p>
+
+{#          Display an additional image to the comment, if any#}
+          {% if w.image %}
+            <img src="{{ w.image }}" alt="{{ w.image }}" class="review_photo">
+          {% endif %}
+
+        </div>
+      {% endfor %}
+
+{#      Derivation of pagination#}
+      {{ custom_pager }}
+
+{#    If there are no comments, then display a message about it#}
+    {% else %}
+      <div class="empty_reviews">
+        <p>The comment list is empty!</p>
+      </div>
+
+    {% endif %}
+
+  </div>
+</section>
+<script src="https://unpkg.com/imask"></script>
+

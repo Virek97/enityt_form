@@ -1,0 +1,6 @@
+entity.content_entity_example_contact.custom_node_list:
+  route_name: entity.content_entity_example_contact.custom_node_list
+  title: 'Add Comment'
+
+  appears_on:
+    - entity.content_entity_example_contact.canonical

@@ -1,0 +1,41 @@
+entity.content_entity_example_contact.canonical:
+  path: '/content_entity_example_contact/{content_entity_example_contact}'
+  defaults:
+    _entity_view: 'content_entity_example_contact'
+    _title: 'Comment Content'
+  requirements:
+    _entity_access: 'content_entity_example_contact.view'
+
+entity.content_entity_example_contact.edit_form:
+  path: '/content_entity_example_contact/{content_entity_example_contact}/edit'
+  defaults:
+    _entity_form: content_entity_example_contact.edit
+    _title: 'Edit Comment'
+  requirements:
+    _entity_access: 'content_entity_example_contact.edit'
+
+entity.content_entity_example_contact.delete_form:
+  path: '/contact/{content_entity_example_contact}/delete'
+  defaults:
+    _entity_form: content_entity_example_contact.delete
+    _title: 'Delete Comment'
+  requirements:
+    _entity_access: 'content_entity_example_contact.delete'
+
+content_entity_example.contact_settings:
+  path: 'admin/structure/content_entity_example_contact_settings'
+  defaults:
+    _form: '\Drupal\content_entity_example\Form\ContactSettingsForm'
+    _title: 'Comment Settings'
+  requirements:
+    _permission: 'administer contact entity'
+
+entity.content_entity_example_contact.custom_node_list:
+  path: '/content_entity_example_contact/custom_list'
+  defaults:
+    _title: 'Comments list'
+    _controller: '\Drupal\content_entity_example\Controller\Content::get_data'
+    _entity_list: 'content_entity_example_contact'
+  requirements:
+    _access: 'TRUE'
+

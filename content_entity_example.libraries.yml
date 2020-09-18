@@ -1,0 +1,10 @@
+scripts_content_entity_example_home:
+  version: 1.0
+  css:
+    theme:
+      css/content_entity_example-style.css: { }
+  js:
+    js/main.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once

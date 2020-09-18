@@ -1,0 +1,15 @@
+<?php
+
+function content_entity_example_theme() {
+  return [
+    'content_entity_example_list_theme' => [
+      'variables' => [
+        'data' => 'data',
+        'base_url' => 'base_url',
+        'comment_form' => 'comment_form',
+        'custom_pager' => [],
+      ],
+    ],
+    'page__content_entity_example_contact__add' => [],
+  ];
+}
